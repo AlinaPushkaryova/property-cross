@@ -4,7 +4,8 @@ mainController.$inject = ['$scope', 'apiService', '$state', 'detailsService', '$
 
 function mainController($scope, apiService, $state, detailsService, $q) {
     // console.log($stateParams);
-
+    
+    $scope.data = {};
     $scope.page = 1;
     $scope.keyword = '';
     $scope.totalListing = 0;
@@ -23,7 +24,10 @@ function mainController($scope, apiService, $state, detailsService, $q) {
     };
 
     $scope.getListing = function () {
-        return apiService.getListing();
+        return apiService.getData()
+            .then(function(response) {
+                
+            });
     };
 
     $scope.getTotalResult = function () {

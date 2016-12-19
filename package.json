@@ -1,0 +1,25 @@
+{
+  "name": "property-cross",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "node-static": "^0.7.9"
+  },
+  "scripts": {
+    "serve": "static --port 8080 -c 0",
+    "start": "npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlinaPushkaryova/property-cross.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlinaPushkaryova/property-cross/issues"
+  },
+  "homepage": "https://github.com/AlinaPushkaryova/property-cross#readme"
+}

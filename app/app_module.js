@@ -6,11 +6,11 @@ myApp.config(function($stateProvider, $urlRouterProvider, $qProvider, $sceDelega
 	$urlRouterProvider.otherwise("/");
 	$qProvider.errorOnUnhandledRejections(false);
 
-  // Лучше разрешать ресурсы так
-  $sceDelegateProvider.resourceUrlWhitelist([
-    'self',
-    'http://api.nestoria.co.uk/**'
-  ]);
+	// Лучше разрешать ресурсы так
+	$sceDelegateProvider.resourceUrlWhitelist([
+		'self',
+		'http://api.nestoria.co.uk/**'
+	]);
 
 	$stateProvider
 		.state ("home", {
