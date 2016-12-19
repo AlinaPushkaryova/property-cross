@@ -2,25 +2,32 @@ var response = false;
 
 myApp.service ("apiService", apiService);
 
-apiService.$inject = ["$http", "$q"];
+apiService.$inject = ["$http", "$q", '$sce'];
 
-function apiService ($http, $q) {
-    this.getData = function (location, page) {
-		// this.location = location;
-		var deferred = $q.defer();
-		$http({
-			method: 'jsonp',
-			url: "http://api.nestoria.co.uk/api?country=uk&pretty=1&&encoding=json&listing_type=buy&action=search_listings&callback=JSON_CALLBACK&place_name=${location}&page=${page}",
-			params: {
-				json_callback: "JSON_CALLBACK"
-			}
-		}).then(function (resp) {
-			deferred.resolve(resp.data.response);
-		}).catch(function (err) {
-			deferred.reject(err);
-		});
-		return deferred.promise;
-
+function apiService ($http, $q, $sce) {
+  this.getData = function (location, page) {
+    return $http({
+      method: 'JSONP',
+      // Но можно разрешить URL и так
+      // url: $sce.trustAsResourceUrl("http://api.nestoria.co.uk/api"),
+      url: "http://api.nestoria.co.uk/api",
+      crossDomain : true,
+      params: {
+        country: 'uk',
+        encoding: 'json',
+        listing_type: 'buy',
+        action: 'search_listings',
+        place_name: location,
+        page: page,
+        pretty: 1
+      },
+      jsonpCallbackParam: 'callback'
+    }).then(function(res) {
+      console.log(res);
+      return res.response;
+    }).catch(function (err) {
+      console.error(err);
+    });
 	};
 
 	this.getListing = function () {
@@ -54,18 +61,3 @@ function apiService ($http, $q) {
   };
 
 }
-
-// function apiCallback (data, error) {
-//     if (data && data.response) {
-//         response = data.response;
-//         console.log(response);
-
-	  //   for (var i = 0; i < response.listings.length; i++)
-			// listing.push(response.listings[i]);
-		//}
-//}
-
-
-
-
-

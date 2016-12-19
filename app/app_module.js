@@ -1,10 +1,16 @@
 var myApp = angular.module("myApp", ["ui.router"]);
 
-myApp.$inject = ["$stateProvider", "$urlRouterProvider", "$qProvider"];
+myApp.$inject = ["$stateProvider", "$urlRouterProvider", "$qProvider", "$sceDelegateProvider"];
 
-myApp.config(function($stateProvider, $urlRouterProvider, $qProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider, $qProvider, $sceDelegateProvider) {
 	$urlRouterProvider.otherwise("/");
 	$qProvider.errorOnUnhandledRejections(false);
+
+  // Лучше разрешать ресурсы так
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'http://api.nestoria.co.uk/**'
+  ]);
 
 	$stateProvider
 		.state ("home", {
@@ -24,4 +30,3 @@ myApp.config(function($stateProvider, $urlRouterProvider, $qProvider) {
 			params:{item: null}
 		});
 });
-
