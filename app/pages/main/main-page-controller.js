@@ -10,6 +10,8 @@ function mainController($scope, $state, mainService, TYPES, KEYS, $stateParams) 
     $scope.totalListing = 0;
 
 
+
+
     this.search = function () {
         mainService.getData($scope.keyword, $scope.page);
     };
@@ -26,13 +28,16 @@ function mainController($scope, $state, mainService, TYPES, KEYS, $stateParams) 
         return mainService.getCounts(TYPES.PAGE);
     };
 
-    $state.go('home', {
-        page_number: $scope.page
-    });
 
-    $scope.house = $stateParams;
+    this.setDetails = function (house) {
+    $state.go('details', {
+        item: house
+    })
+    };
+
+    // $scope.house = $stateParams.item;
     // console.log($scope.house);
-    //
+
     // $state.go('details', {
     //     $stateParams: $scope.house
     // });

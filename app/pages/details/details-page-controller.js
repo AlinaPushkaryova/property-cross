@@ -1,13 +1,15 @@
 myApp.controller ('detailsController', detailsController);
 
-detailsController.$inject = ['apiService', '$scope', 'detailsService'];
+detailsController.$inject = ['apiService', '$scope', 'detailsService', '$state', '$stateParams'];
 
-function detailsController(apiService, $scope, detailsService) {
+function detailsController(apiService, $scope, detailsService, $state, $stateParams) {
+	$scope.house = $stateParams.item;
 
 	// this.setDetails = function () {
 	//     detailsService.setDetails(house);
 	//     $state.go('details');
 	// };
+
 	//
 	// this.houseGet = function () {
 	// 	return apiService.getHouse();

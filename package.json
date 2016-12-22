@@ -8,11 +8,14 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-htmlbuild": "^0.4.2",
     "gulp-refresh": "^1.1.0",
     "node-static": "^0.7.9"
   },
   "scripts": {
+    "gulp": "gulp",
+    "concat": "gulp concat",
     "serve": "static --port 8080 -c 0",
     "start": "npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
