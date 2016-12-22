@@ -1,13 +1,14 @@
+<div ng-controller="mainController as mainController">
 <h1> Property Cross </h1>
 <p> Use the code below to to search for houses to buy. You can search by place-name, postcode or click "My
     location", to search in your current location.
 </p>
 <div class="row">
     <div class="col-md-6">
-        <input type="text" ng-model="keyword" class="form-control" ng-keyup="keyEnter($event)">
+        <input type="text" ng-model="keyword" class="form-control" ng-keyup="mainController.keyEnter($event)">
     </div>
     <div class="col-md-6">
-        <button type="button" class="btn btn-success" ng-click="search()"> Go</button>
+        <button type="button" class="btn btn-success" ng-click="mainController.search()"> Go</button>
         <button type="button" class="btn btn-default"> My location</button>
          <button type="button" class="btn btn-default" ui-sref="favorites">
         Faves
@@ -15,12 +16,12 @@
     </div>
 </div>
 <div class="row text-center">
-	Displaying {{totalListing}} of {{getTotalResult()}} matches
+	Displaying {{totalListing}} of {{mainController.getTotalResult()}} matches
 </div>
-<div class="well row" ng-repeat="house in getListing()" ng-click="setDetails(house)">
+<div class="well row" ng-repeat="house in mainController.getListing()" ng-click="setDetails(house)">
     <img class="col-md-1" ng-src="{{house.thumb_url}}">
-    <p> {{$index +1}} </p>
     <p class="text-left"> {{house.price | currency}} </p>
     <p class="text-left"> {{house.title}} </p>
 </div>
  <button type="button" class="btn btn-default" ng-show="showButton" ng-click="showMoreResults()"> Show more </button>
+</div>

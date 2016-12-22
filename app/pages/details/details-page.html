@@ -1,6 +1,7 @@
-<p> Property details </p>
+<div ng-controller="detailsController as detailsController">
+    <p> Property details </p>
     <div> 
-        <img ng-src="{{house.img_url}}">
+        <img ng-src="{{detailsController.setDetails().img_url}}">
  <!--        <h3> {{setDetails().price | currency}} </h3>
         <h4> {{setDetails().title}} </h4>
         <p> {{setDetails().bedroom_number}} bed, {{setDetails().bathroom_number}} bathroom </p>
@@ -16,4 +17,5 @@
     <button type= "button" class="btn btn-primary pull-right" ng-click="saveHouse()"> +</button>
     <button type="button" class="btn btn-default" ui-sref="home"> Home
     </button>
+</div>
 </div>

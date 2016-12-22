@@ -1,0 +1,33 @@
+var houses = [{
+  "title": "Amazing family house",
+  "price": 14000000,
+  "address": "High Street, Southhampton 19, England",
+  "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Sydney_Gov._House_gardens_to_Opera_House,_jjron,_03.12.2010.jpg/200px-Sydney_Gov._House_gardens_to_Opera_House,_jjron,_03.12.2010.jpg"
+
+},
+{
+    "title": "Be first to buy this one!",
+    "price": 38383002,
+    "address": "Chester Road 14, Timperley, England",
+    "thumb_url": "https://s-media-cache-ak0.pinimg.com/236x/af/7d/71/af7d711e60ed2eeb2994d3b4792a2a61.jpg"
+},
+  {
+    "title": "Are you the lucky one to own such a precious house?",
+    "price": 8302823490842390,
+    "address": "Paul street 17, London, England",
+    "thumb_url": "https://www.stjamestrust.london/wp-content/uploads/2014/12/Spencer-House-4-200x300.jpg"
+  },
+  {
+    "title": "Please, buy it someone...",
+    "price": 888,
+    "address": "Evans Road 14, Scottsdale, England",
+    "thumb_url": "http://reflectingthedesigner.com/wordpress/wp-content/uploads/2013/03/url-2-200x300.jpeg"
+  },
+  {
+    "title": "The best house for lonely rich lady",
+    "price": 3673738239,
+    "address": "Rich street 1, Richland, England",
+    "thumb_url": "https://www.stjamestrust.london/wp-content/uploads/2014/12/Bridgewater-House-1-200x300.jpg"
+
+  }
+]

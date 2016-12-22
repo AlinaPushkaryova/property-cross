@@ -6,19 +6,23 @@
     <title>My AngularJS App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
-    <script src="app/config/angular-ui-router.min.js"> </script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"> </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 
     <div ui-view></div>
 
-    <script src="app/app_module.js"></script>
-    <script src="app/pages/main/main_service.js"></script>
-    <script src="app/pages/main/main_controller.js"></script>
-    <script src="app/pages/details/details_controller.js"></script>
-    <script src="app/pages/details/details_service.js"></script>
-    <script src="app/pages/favorites/favorites_controller.js"></script>
+    <script src="app/app-module.js"></script>
+    <script src="app/router/router.js"></script>
+    <script src="app/const/types-const.js"></script>
+    <script src="app/const/keys-const.js"></script>
+    <script src="app/pages/main/backend-service.js"></script>
+    <script src="app/pages/main/main-page-service.js"></script>
+    <script src="app/pages/main/main-page-controller.js"></script>
+    <script src="app/pages/details/details-page-controller.js"></script>
+    <script src="app/pages/details/details-page-service.js"></script>
+    <script src="app/pages/favorites/favorites-page-controller.js"></script>
 </body>
 </html>
