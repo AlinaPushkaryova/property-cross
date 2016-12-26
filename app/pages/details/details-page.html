@@ -1,18 +1,18 @@
 <div ng-controller="detailsController as detailsController">
     <p> Property details </p>
     <div>
-        <img ng-src="{{house.img_url}}">
-        <h3> {{house.price | currency}} </h3>
-        <h4> {{house.title}} </h4>
-        <p> {{house.bedroom_number}} bed, {{house.bathroom_number}} bathroom </p>
-        <p> {{house.summary}} </p>
+        <img ng-src="{{detailsController.house.img_url}}">
+        <h3> {{detailsController.house.price | currency}} </h3>
+        <h4> {{detailsController.house.title}} </h4>
+        <p> {{detailsController.house.bedroom_number}} bed, {{detailsController.house.bathroom_number}} bathroom </p>
+        <p> {{detailsController.house.summary}} </p>
 
 
     </div>
 
 
     <div class="btn-block pull-right">
-        <button type="button" class="btn btn-primary pull-right" ng-click="saveHouse()"> +</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="detailsController.saveHouse(house)"> +</button>
         <button type="button" class="btn btn-default" ui-sref="home"> Home
         </button>
     </div>

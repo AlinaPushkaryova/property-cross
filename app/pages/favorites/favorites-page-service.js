@@ -1,8 +1,16 @@
 myApp.service ('favoritesService', favoritesService);
 
-favoritesService.$inject = ['$http', 'apiService'];
+favoritesService.$inject = ['$stateParams', '$state'];
 
-function favoritesService () {
+function favoritesService ($stateParams, $state) {
+
+var vm = this;
+
+    vm.favoritesList = function () {
+        var houseItem = JSON.parse(localStorage.getItem('houseData'));
+            console.log(houseItem);
+            return houseItem;
+    };
 
 
 

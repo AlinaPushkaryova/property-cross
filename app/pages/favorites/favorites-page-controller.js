@@ -1,9 +1,23 @@
 myApp.controller ('favoritesController', favoritesController);
 
-favoritesController.$inject = [];
+favoritesController.$inject = ['$state', '$stateParams', 'storageService'];
 
-function favoritesController() {
+function favoritesController($state, $stateParams, storageService) {
 
-    console.log('favoritesController');
+var vm = this;
+vm.house = $stateParams.item;
+
+
+vm.showFavorites = function () {
+    return storageService.getHouse();
+};
+
+vm.setDetails = function (house) {
+        $state.go('details', {
+            item: house
+        })
+    };
+
+
 
 }

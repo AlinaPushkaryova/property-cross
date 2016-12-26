@@ -1,9 +1,25 @@
 myApp.controller ('detailsController', detailsController);
 
-detailsController.$inject = ['apiService', '$scope', 'detailsService', '$state', '$stateParams'];
+detailsController.$inject = ['$state', '$stateParams', 'storageService', 'detailsService'];
 
-function detailsController(apiService, $scope, detailsService, $state, $stateParams) {
-	$scope.house = $stateParams.item;
+function detailsController($state, $stateParams, storageService, detailsService) {
+	var vm = this;
+	vm.house = $stateParams.item;
+
+	vm.saveHouse = function () {
+		return storageService.setHouse(vm.house);
+
+	};
+
+	vm.setDetails = function (house) {
+		$state.go('details', {
+			item: house
+		})
+	};
+
+	 // vm.saveHouse = function (house) {
+		//
+	 // }
 
 	// this.setDetails = function () {
 	//     detailsService.setDetails(house);

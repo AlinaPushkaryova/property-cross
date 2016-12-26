@@ -13,7 +13,8 @@ myApp.config(function($stateProvider, $urlRouterProvider, $qProvider, $sceDelega
         .state ('home', {
             url: '/',
             templateUrl: 'app/pages/main/main-page.html',
-            controller: 'mainController'
+            controller: 'mainController',
+            bindToController: true
         })
         .state ('favorites', {
             url: '/favorites',
