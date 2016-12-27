@@ -6,9 +6,7 @@ function mainController($state, mainService, TYPES, KEYS, $stateParams) {
     var vm = this;
     vm.page = 1;
     vm.keyword = '';
-    vm.totalListing = 0;
-
-
+    
     vm.search = function () {
         mainService.getData(vm.keyword, vm.page);
     };
@@ -31,13 +29,9 @@ function mainController($state, mainService, TYPES, KEYS, $stateParams) {
         })
     };
 
-    // $scope.house = $stateParams.item;
-    // console.log($scope.house);
-
-    // $state.go('details', {
-    //     $stateParams: $scope.house
-    // });
-
+    vm.showMoreResults = function () {
+        
+    };
 
     vm.keyEnter = function ($event) {
         if ($event.keyCode == KEYS.ENTER) {
@@ -45,6 +39,7 @@ function mainController($state, mainService, TYPES, KEYS, $stateParams) {
         }
     };
 }
+
 
 
 

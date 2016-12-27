@@ -1,4 +1,4 @@
-var response = false;
+// var response = false;
 
 myApp.service ('apiService', apiService);
 

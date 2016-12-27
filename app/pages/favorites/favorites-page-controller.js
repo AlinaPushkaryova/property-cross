@@ -5,8 +5,11 @@ favoritesController.$inject = ['$state', '$stateParams', 'dataStorageService', '
 function favoritesController($state, $stateParams, dataStorageService, ITEMS, storageService) {
 
 var vm = this;
-vm.house = $stateParams.item;
+vm.items = [];
 
+vm.onInit = function() {
+        vm.items =  vm.showFavorites();
+    };
 
 vm.showFavorites = function () {
     return storageService.getItem(ITEMS.HOUSE);
@@ -18,6 +21,6 @@ vm.setDetails = function (house) {
         })
     };
 
-
+vm.onInit();
 
 }

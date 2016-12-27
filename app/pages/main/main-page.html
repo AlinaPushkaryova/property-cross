@@ -16,12 +16,12 @@
     </div>
 </div>
 <div class="row text-center">
-	Displaying {{totalListing}} of {{mainController.getTotalResult()}} matches
+	Displaying {{mainController.getListing().length}} of {{mainController.getTotalResult()}} matches
 </div>
 <div class="well row" ng-repeat="house in mainController.getListing()" ng-click="mainController.setDetails(house)">
     <img class="col-md-1" ng-src="{{house.thumb_url}}">
     <p class="text-left"> {{house.price | currency}} </p>
     <p class="text-left"> {{house.title}} </p>
 </div>
- <button type="button" class="btn btn-default" ng-show="showButton" ng-click="showMoreResults()"> Show more </button>
+ <button type="button" class="btn btn-default" ng-show="mainController.showButton" ng-click="mainController.showMoreResults()"> Show more </button>
 </div>

@@ -1,6 +1,6 @@
 <div ng-controller="favoritesController as favoritesController">
     <h1> Favourites</h1>
-    <div class="well row" ng-repeat="house in favoritesController.showFavorites()" ng-click="favoritesController.setDetails(house)">
+    <div class="well row" ng-repeat="house in favoritesController.items track by $index" ng-click="favoritesController.setDetails(house)">
         <img class="col-md-1" ng-src="{{house.thumb_url}}">
         <p class="text-left"> {{price | currency}} </p>
         <p class="text-left"> {{house.title}} </p>
