@@ -1,13 +1,14 @@
 myApp.controller ('detailsController', detailsController);
 
-detailsController.$inject = ['$state', '$stateParams', 'storageService', 'detailsService'];
+detailsController.$inject = ['$state', '$stateParams', 'dataStorageService', 'ITEMS', 'storageService'];
 
-function detailsController($state, $stateParams, storageService, detailsService) {
+function detailsController($state, $stateParams, dataStorageService, ITEMS, storageService) {
 	var vm = this;
 	vm.house = $stateParams.item;
 
 	vm.saveHouse = function () {
-		return storageService.setHouse(vm.house);
+		console.log(localStorage.house);
+		return dataStorageService.setFaveItems([vm.house]);
 
 	};
 
@@ -17,27 +18,4 @@ function detailsController($state, $stateParams, storageService, detailsService)
 		})
 	};
 
-	 // vm.saveHouse = function (house) {
-		//
-	 // }
-
-	// this.setDetails = function () {
-	//     detailsService.setDetails(house);
-	//     $state.go('details');
-	// };
-
-	//
-	// this.houseGet = function () {
-	// 	return apiService.getHouse();
-	// };
-    //
-	// this.setDetails = function () {
-     //    return detailsService.setDetails();
-    // };
-    //
-	// this.getDetails = function (house) {
-     //   return detailsService.getDetails(house);
-
-  // };
-	
 }

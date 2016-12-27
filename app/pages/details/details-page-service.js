@@ -1,22 +1,9 @@
 myApp.service ('detailsService', detailsService);
 //
-detailsService.$inject = ['$http', 'apiService'];
+detailsService.$inject = [];
 //
-function detailsService ($http, apiService) {
+function detailsService () {
  var vm = this;
 
- // vm.saveToFavorites = function (house) {
- //  localStorage.setItem('houseData', JSON.stringify(house));
- //  console.log(localStorage.houseData);
- // };
- //     // getDetails = JSON.parse (session.getItem ('houseData'));
- //     console.log(houseData);
- //     return getDetails;
- // };
- //
- // this.getDetails = function () {
- //     var houseItem = window.JSON.parse(sessionStorage.getItem('houseData'));
- //     console.log(houseItem);
- //     return houseItem;
- // };
+
  }
