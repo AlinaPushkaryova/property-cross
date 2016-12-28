@@ -12,7 +12,9 @@
 
 
     <div class="btn-block pull-right">
-        <button type="button" class="btn btn-primary pull-right" ng-click="detailsController.saveHouse(house)" > + </button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="detailsController.toggleHouse(house)">
+            {{detailsController.itemIndex !== -1 ? '-' : '+'}}
+        </button>
         <button type="button" class="btn btn-default" ui-sref="home"> Home
         </button>
     </div>

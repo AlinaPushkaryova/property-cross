@@ -6,21 +6,24 @@ function mainController($state, mainService, TYPES, KEYS, $stateParams) {
     var vm = this;
     vm.page = 1;
     vm.keyword = '';
-    
+    vm.showButton = false;
+
     vm.search = function () {
-        mainService.getData(vm.keyword, vm.page);
+        this.showButton = true;
+        return mainService.getData(vm.keyword, vm.page);
     };
 
     vm.getListing = function () {
         return mainService.getOptions(TYPES.LISTINGS);
+
     };
 
     vm.getTotalResult = function () {
         return mainService.getCounts(TYPES.TOTAL_RESULTS);
     };
 
-    vm.getCurrentPage = function () {
-        return mainService.getCounts(TYPES.PAGE);
+    vm.getTotalPages = function () {
+        return mainService.getCounts(TYPES.TOTAL_PAGES);
     };
 
     vm.setDetails = function (house) {
@@ -30,7 +33,10 @@ function mainController($state, mainService, TYPES, KEYS, $stateParams) {
     };
 
     vm.showMoreResults = function () {
-        
+
+        vm.page++;
+        return vm.search();
+
     };
 
     vm.keyEnter = function ($event) {

@@ -27,5 +27,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $qProvider, $sceDelega
             controller: 'detailsController',
             params:{item: null}
         });
+
 });
+
 

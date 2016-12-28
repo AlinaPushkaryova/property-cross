@@ -4,28 +4,38 @@ dataStorageService.$inject = ['storageService', 'ITEMS'];
 
 function dataStorageService(storageService, ITEMS) {
 
-    return {
-        getFaveItems: getFaveItems,
-        setFaveItems: setFaveItems
-    };
-
-    // var faveItems = [];
-
     function getFaveItems() {
-        faveItems = storageService.getItem(ITEMS.HOUSE) || [];
-        return faveItems;
-    };
+        return storageService.getItem(ITEMS.HOUSE) || [];
+    }
 
     function setFaveItems(value) {
-        getFaveItems();
-        if(!Array.isArray(value)) {
-            value = [value];
+        var index = findItem(value),
+            currentItems = getFaveItems();
+
+        index === -1 ?
+            currentItems.push(value) :
+            currentItems.splice(index, 1);
+
+        storageService.setItem(ITEMS.HOUSE, currentItems);
+        return findItem(value);
+    }
+
+    function findItem(item) {
+        var items = getFaveItems(),
+            index = -1;
+
+        for (var i = 0; i < items.length; i++){
+            if(items[i].img_url === item.img_url) {
+                index = i;
+            }
         }
 
-        faveItems = !faveItems.length ?
-            value : faveItems.concat(value);
+        return index;
+    }
 
-        storageService.setItem(ITEMS.HOUSE, faveItems)
+    return {
+        getFaveItems: getFaveItems,
+        setFaveItems: setFaveItems,
+        findItem: findItem
     };
-
 }
