@@ -33,9 +33,19 @@ function dataStorageService(storageService, ITEMS) {
         return index;
     }
 
+    // function setRecentSearches(value) {
+    //     var searchesResult = new Array (5);
+    //     searchesResult.push(value);
+    //     console.log(searchesResult);
+    //     storageService.setItem(ITEMS.SEARCHES, searchesResult);
+    //     return searchesResult;
+    // }
+
     return {
         getFaveItems: getFaveItems,
         setFaveItems: setFaveItems,
         findItem: findItem
+        // setRecentSearches: setRecentSearches
+
     };
 }

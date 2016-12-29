@@ -4,6 +4,7 @@ storageService.$inject = [];
 
 function storageService () {
     var vm = this;
+    vm.page = 1;
     
 
     vm.setItem= function (key, item) {

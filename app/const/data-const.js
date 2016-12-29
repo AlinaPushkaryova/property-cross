@@ -1,5 +1,6 @@
 myApp.constant('ITEMS', {
-    'HOUSE': 'house'
+    'HOUSE': 'house',
+    'SEARCHES': 'searches'
 });
 
 
