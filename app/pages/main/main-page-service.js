@@ -31,9 +31,8 @@ function mainService(apiService) {
     this.getCounts = function (type) {
         return data[type] || 0;
     };
-    
-    
 
+    
 }
 
 

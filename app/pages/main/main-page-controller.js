@@ -1,14 +1,23 @@
 myApp.controller('mainController', mainController);
 
-mainController.$inject = ['$state', 'mainService', 'TYPES', 'KEYS'];
+mainController.$inject = ['$state', 'mainService', 'TYPES', 'KEYS', 'dataStorageService'];
 
-function mainController($state, mainService, TYPES, KEYS) {
+function mainController($state, mainService, TYPES, KEYS, dataStorageService) {
     var vm = this;
     vm.keyword = '';
     vm.showButton = false;
+    vm.listing = 0;
+    vm.responseCodeError = 0;
 
     vm.search = function () {
+        vm.listing = 0;
+        dataStorageService.setRecentSearch(vm.keyword);
         return mainService.getData(vm.keyword);
+    };
+
+    vm.recentSearch = function (recentSearch) {
+        vm.listing = 0;
+        return mainService.getData(recentSearch)
     };
 
     vm.getListing = function () {
@@ -40,8 +49,9 @@ function mainController($state, mainService, TYPES, KEYS) {
     };
 
     vm.showMoreResults = function () {
+    vm.listing = vm.getListing().length + vm.listing;
        mainService.showMoreResults();
-    
+
     };
 
     vm.keyEnter = function ($event) {
@@ -50,11 +60,26 @@ function mainController($state, mainService, TYPES, KEYS) {
         }
     };
 
-    // vm.recentSearches = function () {
-    //     return dataStorageService.setRecentSearches(vm.keyword)
-    //
-    // }
+    vm.getSearches = function () {
+        return dataStorageService.getRecentSearches();
+    };
 
+    vm.responseCode = function () {
+    return mainService.getOptions (TYPES.RESPONSE_CODE);
+    };
+
+    vm.errorMessage = function () {
+        if (vm.responseCode()==404) {
+            vm.responseCodeError = 'ERROR: An error occurred while searching. Please check your network connection and try again.'
+        } else if (vm.responseCode()==200 || vm.responseCode()==201) {
+            vm.responseCodeError = 'ERROR: There were no properties found for the given location.'
+        } else if (vm.responseCode()==900) {
+            vm.responseCodeError = 'ERROR: Bad server request. Please enter location name.'
+        } else {
+            vm.responseCodeError = '';
+        }
+        return vm.responseCodeError;
+    }
 }
 
 

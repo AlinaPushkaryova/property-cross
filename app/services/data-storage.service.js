@@ -1,6 +1,6 @@
 myApp.service('dataStorageService', dataStorageService);
 
-dataStorageService.$inject = ['storageService', 'ITEMS'];
+dataStorageService.$inject = [ 'storageService', 'ITEMS' ];
 
 function dataStorageService(storageService, ITEMS) {
 
@@ -9,7 +9,7 @@ function dataStorageService(storageService, ITEMS) {
     }
 
     function setFaveItems(value) {
-        var index = findItem(value),
+        var index        = findItem(value),
             currentItems = getFaveItems();
 
         index === -1 ?
@@ -24,8 +24,8 @@ function dataStorageService(storageService, ITEMS) {
         var items = getFaveItems(),
             index = -1;
 
-        for (var i = 0; i < items.length; i++){
-            if(items[i].img_url === item.img_url) {
+        for (var i = 0; i < items.length; i++) {
+            if (items[ i ].img_url === item.img_url) {
                 index = i;
             }
         }
@@ -33,19 +33,30 @@ function dataStorageService(storageService, ITEMS) {
         return index;
     }
 
-    // function setRecentSearches(value) {
-    //     var searchesResult = new Array (5);
-    //     searchesResult.push(value);
-    //     console.log(searchesResult);
-    //     storageService.setItem(ITEMS.SEARCHES, searchesResult);
-    //     return searchesResult;
-    // }
+    function getRecentSearches() {
+        return storageService.getItem(ITEMS.SEARCHES) || [];
+    }
+
+    function setRecentSearch(currentLocation) {
+        if (!currentLocation.length) {
+            return false;
+        }
+        var recentSearch = getRecentSearches();
+        if (recentSearch.length > 4) {
+            recentSearch.pop();
+        }
+        recentSearch.unshift(currentLocation);
+
+        storageService.setItem(ITEMS.SEARCHES, recentSearch);
+        return recentSearch;
+
+    }
 
     return {
         getFaveItems: getFaveItems,
         setFaveItems: setFaveItems,
-        findItem: findItem
-        // setRecentSearches: setRecentSearches
-
+        findItem: findItem,
+        setRecentSearch: setRecentSearch,
+        getRecentSearches: getRecentSearches
     };
 }

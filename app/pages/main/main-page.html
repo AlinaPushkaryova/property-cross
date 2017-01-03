@@ -14,15 +14,15 @@
         Faves
     </button>
     </div>
+    <div id="search">
+        <p> Recent Searches: </p>
+        <p class="list-group-item" ng-repeat="searchResult in mainController.getSearches() track by $index" ng-click="mainController.recentSearch(searchResult)">{{searchResult}} </p>
+    </div>
 </div>
-    <!--<div>-->
-        <!--<p> Recent Searches:-->
-        <!--<p ng-repeat="search in mainController.recentSearches()"> </p>-->
-        <!--</p>-->
-    <!--</div>-->
 <div class="row text-center">
-	Displaying {{mainController.getListing().length}} of {{mainController.getTotalResult()}} matches
+	Displaying {{mainController.getListing().length + mainController.listing}} of {{mainController.getTotalResult()}} matches
 </div>
+    <h4> {{mainController.errorMessage()}}</h4>
 <div class="well row" ng-repeat="house in mainController.getListing()" ng-click="mainController.setDetails(house)">
     <img class="col-md-1" ng-src="{{house.thumb_url}}">
     <p class="text-left"> {{house.price | currency}} </p>
